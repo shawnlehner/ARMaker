@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ARMaker - Augmented Reality Marker Generator</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="page">
+        <div class="header container">
+            <h1>ARMaker</h1>
+            <p>
+                This tool generates a high visibility augmented reality marker designed to have many available tracking points. You can select whether you would like a marker optimized for Vuforia or ARToolkit based libraries.
+            </p>
+        </div>
+        <div class="marker-row">
+            <div class="marker-container">
+                <div class="marker-options">
+                    <div class="radio-group">
+                        <input id="type-vf" type="radio" name="artype" value="vuforia" checked="checked" /><label for="type-vf">Vuforia</label><input id="type-artk" type="radio" name="artype" value="artoolkit" /><label for="type-artk">ARToolkit</label>
+                    </div>
+                </div>
+                <div class="marker-loader"></div>
+                <div class="marker-wrapper">
+                    <img src="images/spacer.gif" class="marker-image" />
+                </div>
+                <div class="marker-controls">
+                    <a id="download-button" class="button button-primary" download="ar_marker.jpg">Download</a>
+                    <button id="generate-button" class="button button-primary">Re-Generate</button>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <h4>Background</h4>
+                <p>
+                    I am relatively new to augmented reality but one issue I observed immediately was the lack of a good resource for generating highly trackable and uniform markers. For example, Vuforia provides a great sample image but as soon as you need to expand to multiple markers, you are left tracking down (oh the puns) your own set of markers. In addition, I wanted to be able to provide a uniform look to the markers without needed to generate each one by hand. This need is what led me to create the above utility.
+                </p>
+                <hr>
+                <h4>API Support</h4>
+                <p>
+                    Do you need to generate markers on the fly? You can use our simple request API below.
+                    <pre><code><a href="https://armaker.shawnlehner.com/api/v1/generate" target="_blank">https://armaker.shawnlehner.com/api/v1/generate</a></code></pre>
+                    You can include URL parameters to configure the generated marker. The table below provides a list of the available parameters.
+                </p>
+                <table class="u-full-width">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>type</td>
+                            <td>string</td>
+                            <td>vuforia</td>
+                            <td>Specifies the type of marker to generate. Available options are <code>vuforia</code> and <code>artoolkit</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>size</td>
+                            <td>number</td>
+                            <td>1024</td>
+                            <td>Specifies the size of marker to generate. The maximum size available is 2048.</td>
+                        </tr>
+                        <tr>
+                            <td>label</td>
+                            <td>string</td>
+                            <td>null</td>
+                            <td>The label will be printed along the top border of the generated marker. This is useful for keeping track of your markers.</td>
+                        </tr>
+                        <tr>
+                            <td>download</td>
+                            <td>bool</td>
+                            <td>true</td>
+                            <td>Indicates that the request should trigger a download within the browser (attachment)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h4>Source Code</h4>
+                <p>
+                    I plan to upload the source code to GitHub as soon as I have time the cleanup the project. Stay tuned!
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                This free to use utility is courtesy <a href="https://www.shawnlehner.com">Shawn Lehner</a>. Enjoy!
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='js/scripts.js'></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-9527837-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
